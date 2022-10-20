@@ -76,6 +76,7 @@ Editor.defaultConfig = {
         '|',
         'MathType', 'ChemType'
     ],
+    shouldNotGroupWhenFull: true,
     language: 'en',
     fontColor: {
         colors: COLOR_PALETTE,
