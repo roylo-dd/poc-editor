@@ -1,0 +1,8 @@
+<!doctype html><html><head><title>Mathtype Quick start guide</title><script src="https://www.wiris.net/demo/editor/editor"></script><script>var editor;
+        window.onload = function () {
+            editor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'en' });
+            editor.insertInto(document.getElementById('editor'));
+            editor.onIsReady(() => {
+                editor.openHand();
+            });
+        };</script></head><body><div id="editor"></div><script src="mathtype.js"></script></body></html>

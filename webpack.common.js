@@ -1,11 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const Dotenv = require('dotenv-webpack').config({
-    allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
-    silent: true, // hide any errors
-    defaults: false, // load '.env.defaults' as the default values if empty.
-});
+const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 const { styles } = require('@ckeditor/ckeditor5-dev-utils');
