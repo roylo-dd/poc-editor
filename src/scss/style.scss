@@ -1,0 +1,63 @@
+.ck-content {
+  .ratio-container {
+    position: relative;
+    display: block;
+    max-width: 100%;
+  }
+
+  .ratio-frame {
+    padding-top: 56.25%;
+
+    &.themed {
+      padding-top: initial;
+
+      .ratio-object {
+        position: relative;
+      }
+
+      iframe {
+        width: 100%;
+      }
+    }
+
+    &:not(.themed) {
+      iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    video, audio {
+      width: 100%;
+    }
+  }
+
+  .ratio-object {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+#editor {
+  max-width: 100%;
+
+  &.fullscreen {
+    .wrs_editor {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      border-radius: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+      overflow: hidden;
+    }
+  }
+}
