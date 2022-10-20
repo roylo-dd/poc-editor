@@ -82,11 +82,11 @@ Editor.defaultConfig = {
         colors: COLOR_PALETTE,
         columns: 6
     },
-    fontFamily: {
-        options: [
-            'Times New Roman, Times, serif'
-        ]
-    },
+    // fontFamily: {
+    //     options: [
+    //         'Times New Roman, Times, serif'
+    //     ]
+    // },
     fontSize: {
         options: [
             'tiny',
