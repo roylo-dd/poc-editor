@@ -23,6 +23,7 @@ import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
 import { TableCaption, TableCellProperties, TableProperties } from '@ckeditor/ckeditor5-table';
 import Table from '@ckeditor/ckeditor5-table/src/table.js';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
+import EditorWatchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog';
 import ContextWatchdog from '@ckeditor/ckeditor5-watchdog/src/contextwatchdog';
 // import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 // import { AllowClassesPlugin } from './includes/allow_classes';
@@ -159,4 +160,4 @@ Editor.defaultConfig = {
     uploadServer: ""
 };
 
-export default { CKContextWatchingDog: ContextWatchdog, CKEditor: Editor, CKContext: Context };
+export default { CKEditorWatchingDog: EditorWatchdog, CKContextWatchingDog: ContextWatchdog, CKEditor: Editor, CKContext: Context };
