@@ -110,6 +110,10 @@ module.exports = {
             inject: false
         }),
         new HtmlWebpackPlugin({
+            filename: 'chemtype.html', template: 'src/chemtype.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
             filename: 'index.html', template: 'src/index.html',
             inject: false
         }),
