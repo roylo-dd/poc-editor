@@ -3,7 +3,6 @@ import { UPLOAD_SERVER } from '../ckeditor';
 class UploadAdapter {
     constructor(editor, loader) {
         // The file loader instance to use during the upload.
-        console.log(editor.config._config);
         this.editor = editor;
         this.loader = loader;
     }
@@ -27,14 +26,18 @@ class UploadAdapter {
 
     // Initializes the XMLHttpRequest object using the URL passed to the constructor.
     _initRequest() {
-        const xhr = this.xhr = new XMLHttpRequest();
+        try{
+            const xhr = this.xhr = new XMLHttpRequest();
 
-        // Note that your request may look different. It is up to you and your editor
-        // integration to choose the right communication channel. This example uses
-        // a POST request with JSON as a data structure but your configuration
-        // could be different.
-        xhr.open('POST', `${ editor.config._config.uploadServer }`, true);
-        xhr.responseType = 'json';
+            // Note that your request may look different. It is up to you and your editor
+            // integration to choose the right communication channel. This example uses
+            // a POST request with JSON as a data structure but your configuration
+            // could be different.
+            xhr.open('POST', `${ this.editor.config._config.uploadServer }`, true);
+            xhr.responseType = 'json';
+        }catch (e){
+            console.log(e)
+        }
     }
 
     // Initializes XMLHttpRequest listeners.
