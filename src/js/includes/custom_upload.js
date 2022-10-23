@@ -33,7 +33,7 @@ class UploadAdapter {
             // integration to choose the right communication channel. This example uses
             // a POST request with JSON as a data structure but your configuration
             // could be different.
-            xhr.open('POST', `${ this.editor.config._config.uploadServer }`, true);
+            xhr.open('POST', `${ config.uploadServer }`, true);
             xhr.responseType = 'json';
         }catch (e){
             console.log(e)
