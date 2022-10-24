@@ -11,7 +11,8 @@ module.exports = {
 
     entry: {
         ckeditor: path.resolve(__dirname, 'src/js', 'ckeditor.js'),
-        mathtype: path.resolve(__dirname, 'src/js', 'mathtype.js')
+        mathtype: path.resolve(__dirname, 'src/js', 'mathtype.js'),
+        responsive: path.resolve(__dirname, 'src/js/includes', 'device_detect.js')
     },
 
     output: {

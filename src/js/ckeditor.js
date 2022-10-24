@@ -30,7 +30,6 @@ import ContextWatchdog from '@ckeditor/ckeditor5-watchdog/src/contextwatchdog';
 // import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 // import { AllowClassesPlugin } from './includes/allow_classes';
 import MathType from '@wiris/mathtype-ckeditor5';
-import '../js/includes/device_detect';
 import '../scss/style.scss';
 
 
