@@ -3,6 +3,8 @@ import { Bold, Italic, Strikethrough, Subscript, Superscript } from '@ckeditor/c
 import Context from '@ckeditor/ckeditor5-core/src/context';
 
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
+import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor.js';
+
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
 import { FontColor, FontSize } from '@ckeditor/ckeditor5-font';
 import { ImageInsert, ImageResizeButtons, ImageResizeEditing, ImageResizeHandles } from '@ckeditor/ckeditor5-image';
@@ -39,11 +41,7 @@ import { mediaEmbedConfig } from './includes/media_embed';
 
 // const extraPlugins = [ AllowClassesPlugin ];
 
-class Editor extends ClassicEditor {
-}
-
-// Plugins to include in the build.
-Editor.builtinPlugins = [ Essentials,
+const plugin = [ Essentials,
     Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Strikethrough, Subscript, Superscript,
     FontSize, FontColor,
     Link,
@@ -56,8 +54,7 @@ Editor.builtinPlugins = [ Essentials,
     MathType
 ];
 
-// Editor configuration.
-Editor.defaultConfig = {
+const config = {
     toolbar: [
         'undo', 'redo',
         '|',
@@ -157,7 +154,21 @@ Editor.defaultConfig = {
         }
     },
     licenseKey: process.env.LICENSEKEY,
-    uploadServer: ""
+    uploadServer: ''
 };
 
-export default { CKEditorWatchingDog: EditorWatchdog, CKContextWatchingDog: ContextWatchdog, CKEditor: Editor, CKContext: Context };
+class Editor extends ClassicEditor {
+}
+
+class Editor2 extends InlineEditor {
+}
+
+// Plugins to include in the build.
+ClassicEditor.builtinPlugins = plugin;
+InlineEditor.builtinPlugins = plugin;
+
+// Editor configuration.
+ClassicEditor.defaultConfig = config;
+InlineEditor.defaultConfig = config;
+
+export default { EditorWatchdog, ContextWatchdog, ClassicEditor, InlineEditor, Context };

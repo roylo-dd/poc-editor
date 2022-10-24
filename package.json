@@ -17,6 +17,7 @@
     "@ckeditor/ckeditor5-core": "^35.2.1",
     "@ckeditor/ckeditor5-dev-utils": "^31.1.1",
     "@ckeditor/ckeditor5-editor-classic": "^35.2.1",
+    "@ckeditor/ckeditor5-editor-inline": "^35.2.1",
     "@ckeditor/ckeditor5-essentials": "^35.2.1",
     "@ckeditor/ckeditor5-font": "^35.2.1",
     "@ckeditor/ckeditor5-image": "^35.2.1",

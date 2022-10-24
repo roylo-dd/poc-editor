@@ -10,15 +10,15 @@
 </div>
 <script src="ckeditor.js"></script>
 <script>
-    if (ClassicEditor) {
-        const { CKEditor } = ClassicEditor;
+    if (CKEditor) {
+        const { ClassicEditor } = CKEditor;
         if (document.querySelector('#editor')) {
             const HOSTNAME = window.location.hostname;
             const CKFINDER_URL = `http://${ HOSTNAME }:2030`;
 
             const UPLOAD_SERVER = `${ CKFINDER_URL }/easy-image.php?HTTP_REFERER=${ HOSTNAME }`;
 
-            CKEditor
+            ClassicEditor
                 .create(document.querySelector('#editor'), {
                     uploadServer: UPLOAD_SERVER
                 })
