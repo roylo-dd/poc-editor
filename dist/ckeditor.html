@@ -1,12 +1,12 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CKEditor 5 Quick start guide</title></head><body><div id="editor"><p>The editor content goes here.</p></div><script src="ckeditor.js"></script><script>if (ClassicEditor) {
-        const { CKEditor } = ClassicEditor;
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CKEditor 5 Quick start guide</title></head><body><div id="editor"><p>The editor content goes here.</p></div><script src="ckeditor.js"></script><script>if (CKEditor) {
+        const { ClassicEditor } = CKEditor;
         if (document.querySelector('#editor')) {
             const HOSTNAME = window.location.hostname;
             const CKFINDER_URL = `http://${ HOSTNAME }:2030`;
 
             const UPLOAD_SERVER = `${ CKFINDER_URL }/easy-image.php?HTTP_REFERER=${ HOSTNAME }`;
 
-            CKEditor
+            ClassicEditor
                 .create(document.querySelector('#editor'), {
                     uploadServer: UPLOAD_SERVER
                 })
