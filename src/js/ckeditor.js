@@ -156,12 +156,6 @@ const config = {
     uploadServer: ''
 };
 
-class Editor extends ClassicEditor {
-}
-
-class Editor2 extends InlineEditor {
-}
-
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = plugin;
 InlineEditor.builtinPlugins = plugin;
