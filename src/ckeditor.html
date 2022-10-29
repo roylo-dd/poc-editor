@@ -6,8 +6,10 @@
 </head>
 <body>
 <div id="editor">
-    <p>The editor content goes here.</p>
+    <p><b>The</b> editor content goes here.</p>
+<!--    <span class="restricted-editing-exception">123</span>-->
 </div>
+<!--<span class="restricted-editing-exception">Region</span>-->
 <script src="responsive.js"></script>
 <script src="ckeditor.js"></script>
 <script>
@@ -24,7 +26,10 @@
                     uploadServer: UPLOAD_SERVER
                 })
                 .then(editor => {
+
+                    // editor.enableReadOnlyMode( 'MathType' );
                     window.editor = editor;
+
                 })
                 .catch(error => {
                     console.error('Oops, something went wrong!');

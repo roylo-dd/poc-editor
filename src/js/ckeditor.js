@@ -29,12 +29,16 @@ import EditorWatchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog';
 import ContextWatchdog from '@ckeditor/ckeditor5-watchdog/src/contextwatchdog';
 // import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 // import { AllowClassesPlugin } from './includes/allow_classes';
+import RestrictedEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/restrictededitingmode';
+import StandardEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/standardeditingmode';
+
 import MathType from '@wiris/mathtype-ckeditor5';
 import '../scss/style.scss';
 
 
 import { COLOR_PALETTE } from './includes/color_palette';
 import { PreventDragImage } from './includes/custom_paste_plugin';
+import { PreventTyping } from './includes/custom_typing_plugin';
 import { CustomUploadAdapterPlugin } from './includes/custom_upload';
 import { mediaEmbedConfig } from './includes/media_embed';
 
@@ -51,6 +55,16 @@ const plugin = [ Essentials,
     List,
     Alignment,
     MathType
+    // RestrictedEditingMode
+    // StandardEditingMode
+];
+
+const equationPlugin = [
+    CustomUploadAdapterPlugin, PreventDragImage, PreventTyping,
+
+    MathType,
+    RestrictedEditingMode
+    // StandardEditingMode
 ];
 
 const config = {
@@ -73,6 +87,17 @@ const config = {
         '|',
         'MathType', 'ChemType'
     ],
+    restrictedEditing: {
+        allowedCommands: [ 'MathType', 'ChemType' ],
+        allowedAttributes: [ 'MathType', 'ChemType' ]
+    },
+//     mathTypeParameters: {
+//         editorParameters: {
+//             toolbar: `<toolbar ref="general">
+// <tab ref='chemistry' before='matrices'><removeItem ref="bold"/></tab>
+// </toolbar>`
+//         }
+//     },
     shouldNotGroupWhenFull: true,
     language: 'en',
     fontColor: {
@@ -164,4 +189,13 @@ InlineEditor.builtinPlugins = plugin;
 ClassicEditor.defaultConfig = config;
 InlineEditor.defaultConfig = config;
 
-export default { EditorWatchdog, ContextWatchdog, ClassicEditor, InlineEditor, Context };
+const EquationInlineEditor = InlineEditor
+InlineEditor.builtinPlugins = equationPlugin;
+
+export default {
+    EditorWatchdog,
+    ContextWatchdog,
+    ClassicEditor,
+    InlineEditor,
+    EquationInlineEditor,Context
+};

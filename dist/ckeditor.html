@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CKEditor 5 Quick start guide</title></head><body><div id="editor"><p>The editor content goes here.</p></div><script src="ckeditor.js"></script><script src="responsive.js"></script><script>if (CKEditor) {
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CKEditor 5 Quick start guide</title></head><body><div id="editor"><p><b>The</b> editor content goes here.</p></div><script src="responsive.js"></script><script src="ckeditor.js"></script><script>if (CKEditor) {
         const { ClassicEditor } = CKEditor;
         if (document.querySelector('#editor')) {
             const HOSTNAME = window.location.hostname;
@@ -11,7 +11,10 @@
                     uploadServer: UPLOAD_SERVER
                 })
                 .then(editor => {
+
+                    // editor.enableReadOnlyMode( 'MathType' );
                     window.editor = editor;
+
                 })
                 .catch(error => {
                     console.error('Oops, something went wrong!');

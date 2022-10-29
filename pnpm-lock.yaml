@@ -7,6 +7,7 @@ specifiers:
   '@ckeditor/ckeditor5-core': ^35.2.1
   '@ckeditor/ckeditor5-dev-utils': ^31.1.1
   '@ckeditor/ckeditor5-editor-classic': ^35.2.1
+  '@ckeditor/ckeditor5-editor-inline': ^35.2.1
   '@ckeditor/ckeditor5-essentials': ^35.2.1
   '@ckeditor/ckeditor5-font': ^35.2.1
   '@ckeditor/ckeditor5-image': ^35.2.1
@@ -16,6 +17,7 @@ specifiers:
   '@ckeditor/ckeditor5-paragraph': ^35.2.1
   '@ckeditor/ckeditor5-paste-from-office': ^35.2.1
   '@ckeditor/ckeditor5-remove-format': ^35.2.1
+  '@ckeditor/ckeditor5-restricted-editing': ^35.2.1
   '@ckeditor/ckeditor5-table': ^35.2.1
   '@ckeditor/ckeditor5-theme-lark': ^35.2.1
   '@ckeditor/ckeditor5-upload': ^35.2.1
@@ -42,6 +44,7 @@ dependencies:
   '@ckeditor/ckeditor5-core': 35.2.1
   '@ckeditor/ckeditor5-dev-utils': 31.1.1_webpack@5.74.0
   '@ckeditor/ckeditor5-editor-classic': 35.2.1
+  '@ckeditor/ckeditor5-editor-inline': 35.2.1
   '@ckeditor/ckeditor5-essentials': 35.2.1
   '@ckeditor/ckeditor5-font': 35.2.1
   '@ckeditor/ckeditor5-image': 35.2.1
@@ -51,6 +54,7 @@ dependencies:
   '@ckeditor/ckeditor5-paragraph': 35.2.1
   '@ckeditor/ckeditor5-paste-from-office': 35.2.1
   '@ckeditor/ckeditor5-remove-format': 35.2.1
+  '@ckeditor/ckeditor5-restricted-editing': 35.2.1
   '@ckeditor/ckeditor5-table': 35.2.1
   '@ckeditor/ckeditor5-theme-lark': 35.2.1
   '@ckeditor/ckeditor5-upload': 35.2.1
@@ -285,6 +289,14 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
+  /@ckeditor/ckeditor5-editor-inline/35.2.1:
+    resolution: {integrity: sha512-gDakPzsdZErUpHRxcf8QHD9Lj+ipsdsGD+lqKS9b+Ug7R9T+nCDgCeCarN324C4pWco/vl6pFACtkA0iooD4EA==}
+    engines: {node: '>=14.0.0', npm: '>=5.7.1'}
+    dependencies:
+      ckeditor5: 35.2.1
+      lodash-es: 4.17.21
+    dev: false
+
   /@ckeditor/ckeditor5-engine/35.2.1:
     resolution: {integrity: sha512-7cVYYNBm3VJ2jhwgbSnzHBn1tDeRiTQ4X/TI3S7/C+hOCVxsB8bns8GV/AOTuAromrbwpME4QXTY+Z6okcHyLA==}
     engines: {node: '>=14.0.0', npm: '>=5.7.1'}
@@ -368,6 +380,13 @@ packages:
 
   /@ckeditor/ckeditor5-remove-format/35.2.1:
     resolution: {integrity: sha512-/FPKN5RrSYGumAIumKa9hipdQN1cu+IE05POQzzvIbb6q59FINi4LHNrZdbXQouZh+3a4bgeUpUGdBJGkk3XgA==}
+    engines: {node: '>=14.0.0', npm: '>=5.7.1'}
+    dependencies:
+      ckeditor5: 35.2.1
+    dev: false
+
+  /@ckeditor/ckeditor5-restricted-editing/35.2.1:
+    resolution: {integrity: sha512-0I3exAPu8lVnM7LtYG11RRaCcTLZ2hz5q+E05kKRUIn0s+slluriibqA5EoSk+Sj4leZQxESda8J5hPBXyX2ew==}
     engines: {node: '>=14.0.0', npm: '>=5.7.1'}
     dependencies:
       ckeditor5: 35.2.1
