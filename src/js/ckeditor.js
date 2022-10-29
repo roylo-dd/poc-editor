@@ -173,7 +173,7 @@ ClassicEditor.defaultConfig = config;
 InlineEditor.defaultConfig = config;
 
 const EquationInlineEditor = InlineEditor
-InlineEditor.builtinPlugins = equationPlugin;
+EquationInlineEditor.builtinPlugins = equationPlugin;
 
 export default {
     EditorWatchdog,
