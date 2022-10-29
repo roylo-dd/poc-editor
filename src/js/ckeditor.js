@@ -59,9 +59,8 @@ const plugin = [ Essentials,
     // StandardEditingMode
 ];
 
-const equationPlugin = [
-    CustomUploadAdapterPlugin, PreventDragImage, PreventTyping,
-
+const equationPlugin = [Essentials,
+    PreventDragImage,PreventTyping,
     MathType,
     RestrictedEditingMode
     // StandardEditingMode
@@ -69,22 +68,6 @@ const equationPlugin = [
 
 const config = {
     toolbar: [
-        'undo', 'redo',
-        '|',
-        'removeFormat',
-        'bold', 'italic', 'strikethrough', 'subscript', 'superscript',
-        '|',
-        'fontSize', 'fontColor',
-        '|',
-        'link', 'insertTable',
-        '|',
-        'uploadImage', 'mediaEmbed',
-        // 'insertImage',
-        '|',
-        'bulletedList', 'numberedList',
-        '|',
-        'alignment',
-        '|',
         'MathType', 'ChemType'
     ],
     restrictedEditing: {
