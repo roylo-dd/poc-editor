@@ -67,7 +67,22 @@ const equationPlugin = [Essentials,
 ];
 
 const config = {
-    toolbar: [
+    toolbar: [ 'undo', 'redo',
+        '|',
+        'removeFormat',
+        'bold', 'italic', 'strikethrough', 'subscript', 'superscript',
+        '|',
+        'fontSize', 'fontColor',
+        '|',
+        'link', 'insertTable',
+        '|',
+        'uploadImage', 'mediaEmbed',
+        // 'insertImage',
+        '|',
+        'bulletedList', 'numberedList',
+        '|',
+        'alignment',
+        '|',
         'MathType', 'ChemType'
     ],
     restrictedEditing: {
@@ -164,6 +179,20 @@ const config = {
     uploadServer: ''
 };
 
+const equationConfig = {
+    toolbar: [
+        'MathType', 'ChemType'
+    ],
+    restrictedEditing: {
+        allowedCommands: [ 'MathType', 'ChemType' ],
+        allowedAttributes: [ 'MathType', 'ChemType' ]
+    },
+    shouldNotGroupWhenFull: true,
+    language: 'en',
+    licenseKey: process.env.LICENSEKEY,
+};
+
+
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = plugin;
 InlineEditor.builtinPlugins = plugin;
@@ -172,13 +201,15 @@ InlineEditor.builtinPlugins = plugin;
 ClassicEditor.defaultConfig = config;
 InlineEditor.defaultConfig = config;
 
-const EquationInlineEditor = InlineEditor
+class EquationInlineEditor extends InlineEditor{};
 EquationInlineEditor.builtinPlugins = equationPlugin;
+EquationInlineEditor.defaultConfig = equationConfig;
 
 export default {
     EditorWatchdog,
     ContextWatchdog,
     ClassicEditor,
     InlineEditor,
-    EquationInlineEditor,Context
+    EquationInlineEditor,
+    Context
 };
