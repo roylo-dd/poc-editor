@@ -91,8 +91,8 @@ const config = {
     },
 //     mathTypeParameters: {
 //         editorParameters: {
-//             toolbar: `<toolbar ref="general">
-// <tab ref='chemistry' before='matrices'><removeItem ref="bold"/></tab>
+//             toolbar: `<toolbar ref='general'>
+// <tab ref='chemistry' before='matrices'><removeItem ref='bold'/></tab>
 // </toolbar>`
 //         }
 //     },
