@@ -1,6 +1,6 @@
 {
   "name": "poc-editor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/ckeditor.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
@@ -32,7 +32,7 @@
     "@ckeditor/ckeditor5-theme-lark": "^35.2.1",
     "@ckeditor/ckeditor5-upload": "^35.2.1",
     "@ckeditor/ckeditor5-watchdog": "^35.2.1",
-    "@wiris/mathtype-ckeditor5": "8.0.0",
+    "@wiris/mathtype-ckeditor5": "7.31.0",
     "css-loader": "^5.2.7",
     "postcss-loader": "^4.3.0",
     "raw-loader": "^4.0.2",
