@@ -35,7 +35,6 @@ import StandardEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/stan
 import MathType from '@wiris/mathtype-ckeditor5';
 import '../scss/style.scss';
 
-
 import { COLOR_PALETTE } from './includes/color_palette';
 import { PreventDragImage } from './includes/custom_paste_plugin';
 import { PreventTyping } from './includes/custom_typing_plugin';
@@ -60,6 +59,7 @@ const plugin = [ Essentials,
 ];
 
 const equationPlugin = [Essentials,
+    Paragraph,
     PreventDragImage,PreventTyping,
     MathType,
     RestrictedEditingMode
