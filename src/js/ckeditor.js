@@ -33,6 +33,8 @@ import RestrictedEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/re
 import StandardEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/standardeditingmode';
 
 import MathType from '@wiris/mathtype-ckeditor5';
+import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+
 import '../scss/style.scss';
 
 import { COLOR_PALETTE } from './includes/color_palette';
@@ -53,7 +55,8 @@ const plugin = [ Essentials,
     // UploadAdapter, SimpleUploadAdapter,
     List,
     Alignment,
-    MathType
+    MathType,
+    WordCount
     // RestrictedEditingMode
     // StandardEditingMode
 ];
