@@ -37,10 +37,12 @@ import MathType from '@wiris/mathtype-ckeditor5';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 
 import Comments from '@ckeditor/ckeditor5-comments/src/comments';
+import CommentsRepository from '@ckeditor/ckeditor5-comments/src/comments/commentsrepository';
 
 import '../scss/style.scss';
 
 import { COLOR_PALETTE } from './includes/color_palette';
+import { CommentsIntegration } from './includes/custom_comment';
 import { PreventDragImage } from './includes/custom_paste_plugin';
 import { PreventTyping } from './includes/custom_typing_plugin';
 import { CustomUploadAdapterPlugin } from './includes/custom_upload';
@@ -84,7 +86,8 @@ const commentPlugin = [ Essentials,
     Alignment,
     MathType,
     WordCount,
-    Comments
+    Comments,
+    CommentsRepository
     // RestrictedEditingMode
     // StandardEditingMode
 ];
@@ -215,12 +218,17 @@ const equationConfig = {
     licenseKey: process.env.LICENSEKEY,
 };
 
+// const channelId = "foo"
 const commentConfig = {
     toolbar: [
         'comment'
     ],
     shouldNotGroupWhenFull: true,
+    extraPlugins: [ CommentsIntegration ],
     language: 'en',
+    // collaboration: {
+    //     channelId
+    // },
     licenseKey: process.env.LICENSEKEY,
 };
 
