@@ -16,6 +16,7 @@
     "@ckeditor/ckeditor5-basic-styles": "^35.2.1",
     "@ckeditor/ckeditor5-core": "^35.2.1",
     "@ckeditor/ckeditor5-dev-utils": "^31.1.1",
+    "@ckeditor/ckeditor5-editor-balloon": "^35.3.1",
     "@ckeditor/ckeditor5-editor-classic": "^35.2.1",
     "@ckeditor/ckeditor5-editor-inline": "^35.2.1",
     "@ckeditor/ckeditor5-essentials": "^35.2.1",
@@ -41,6 +42,7 @@
     "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-comments": "^35.3.1",
     "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.55.0",

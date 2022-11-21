@@ -4,6 +4,7 @@ import Context from '@ckeditor/ckeditor5-core/src/context';
 
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
 import InlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor.js';
+import BalloonEditor from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor.js';
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
 import { FontColor, FontSize } from '@ckeditor/ckeditor5-font';
@@ -34,6 +35,8 @@ import StandardEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/stan
 
 import MathType from '@wiris/mathtype-ckeditor5';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+
+import Comments from '@ckeditor/ckeditor5-comments/src/comments';
 
 import '../scss/style.scss';
 
@@ -66,6 +69,23 @@ const equationPlugin = [Essentials,
     PreventDragImage,PreventTyping,
     MathType,
     RestrictedEditingMode
+    // StandardEditingMode
+];
+
+const commentPlugin = [ Essentials,
+    Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Strikethrough, Subscript, Superscript,
+    FontSize, FontColor,
+    Link,
+    Table, TableToolbar, TableCaption, TableProperties, TableCellProperties,
+    Image, ImageCaption, ImageStyle, ImageToolbar, ImageUpload, ImageInsert, ImageResizeEditing, ImageResizeButtons, ImageResizeHandles, LinkImage, MediaEmbed,
+    CustomUploadAdapterPlugin, PreventDragImage,
+    // UploadAdapter, SimpleUploadAdapter,
+    List,
+    Alignment,
+    MathType,
+    WordCount,
+    Comments
+    // RestrictedEditingMode
     // StandardEditingMode
 ];
 
@@ -195,6 +215,15 @@ const equationConfig = {
     licenseKey: process.env.LICENSEKEY,
 };
 
+const commentConfig = {
+    toolbar: [
+        'comment'
+    ],
+    shouldNotGroupWhenFull: true,
+    language: 'en',
+    licenseKey: process.env.LICENSEKEY,
+};
+
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = plugin;
@@ -208,11 +237,16 @@ class EquationInlineEditor extends InlineEditor{};
 EquationInlineEditor.builtinPlugins = equationPlugin;
 EquationInlineEditor.defaultConfig = equationConfig;
 
+class CommentEditor extends BalloonEditor{};
+CommentEditor.builtinPlugins = commentPlugin;
+CommentEditor.defaultConfig = commentConfig;
+
 export default {
     EditorWatchdog,
     ContextWatchdog,
     ClassicEditor,
     InlineEditor,
     EquationInlineEditor,
+    CommentEditor,
     Context
 };
