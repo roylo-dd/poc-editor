@@ -6,16 +6,22 @@ export class PreventTyping extends Plugin {
     }
 
     init() {
-        //Todo
-        // this.editor.command.forceDisabled("RestrictedEditingMode")
     }
 
     afterInit() {
-        // const config = this.editor.config._config || this.editor.config;
-        // const { editorType = '' } = config;
-        // if (editorType === 'equation') {
-            this.editor.plugins.get('RestrictedEditingModeEditing').enableCommand('MathType');
-            this.editor.plugins.get('RestrictedEditingModeEditing').enableCommand('ChemType');
-        // }
+        const mathType = this.editor.commands.get( 'MathType' );
+        mathType.on('execute', () => {
+            this.editor.execute( 'selectAll' );
+            mathType.openEditor()
+        })
+
+        this.editor.editing.view.document.on( 'keydown', ( evt, data ) => {
+            if ( data.keyCode == 8 ) {
+                this.editor.setData("")
+            }
+        } );
+
+        this.editor.plugins.get('RestrictedEditingModeEditing').enableCommand('MathType');
+        this.editor.plugins.get('RestrictedEditingModeEditing').enableCommand('ChemType');
     }
 }

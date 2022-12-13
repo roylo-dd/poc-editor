@@ -40,6 +40,7 @@ import Comments from '@ckeditor/ckeditor5-comments/src/comments';
 import CommentsRepository from '@ckeditor/ckeditor5-comments/src/comments/commentsrepository';
 
 import '../scss/style.scss';
+import mathConfig from './constant/mathConfig';
 
 import { COLOR_PALETTE } from './includes/color_palette';
 import { CommentsIntegration } from './includes/custom_comment';
@@ -213,6 +214,9 @@ const equationConfig = {
         allowedCommands: [ 'MathType', 'ChemType' ],
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
+    mathTypeParameters: {
+        editorParameters: mathConfig.mathConfig
+    },
     shouldNotGroupWhenFull: true,
     language: 'en',
     licenseKey: process.env.LICENSEKEY,
@@ -234,16 +238,19 @@ const commentConfig = {
 
 
 // Plugins to include in the build.
+class DemoEditor extends ClassicEditor{};
+DemoEditor.builtinPlugins = plugin;
 ClassicEditor.builtinPlugins = plugin;
 InlineEditor.builtinPlugins = plugin;
 
 // Editor configuration.
-ClassicEditor.defaultConfig = config;
-InlineEditor.defaultConfig = config;
+DemoEditor.defaultConfig = config;
+ClassicEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType')};
+InlineEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType')};
 
 class EquationInlineEditor extends InlineEditor{};
 EquationInlineEditor.builtinPlugins = equationPlugin;
-EquationInlineEditor.defaultConfig = equationConfig;
+EquationInlineEditor.defaultConfig = {...equationConfig,toolbar:equationConfig.toolbar.filter(item=>item!=='ChemType')};
 
 class CommentEditor extends BalloonEditor{};
 CommentEditor.builtinPlugins = commentPlugin;
@@ -252,6 +259,7 @@ CommentEditor.defaultConfig = commentConfig;
 export default {
     EditorWatchdog,
     ContextWatchdog,
+    DemoEditor,
     ClassicEditor,
     InlineEditor,
     EquationInlineEditor,

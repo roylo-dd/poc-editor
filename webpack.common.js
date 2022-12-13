@@ -12,7 +12,8 @@ module.exports = {
     entry: {
         ckeditor: path.resolve(__dirname, 'src/js', 'ckeditor.js'),
         mathtype: path.resolve(__dirname, 'src/js', 'mathtype.js'),
-        responsive: path.resolve(__dirname, 'src/js/includes', 'device_detect.js')
+        responsive: path.resolve(__dirname, 'src/js/includes', 'device_detect.js'),
+        mathConfig: path.resolve(__dirname, 'src/js/constant', 'mathConfig.js')
     },
 
     output: {
@@ -108,6 +109,14 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'mathtype.html', template: 'src/mathtype.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'mathtype_trim.html', template: 'src/mathtype_trim.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'mathtype_enhancement.html', template: 'src/mathtype_enhancement.html',
             inject: false
         }),
         new HtmlWebpackPlugin({

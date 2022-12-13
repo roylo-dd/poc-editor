@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CKEditor 5 Quick start guide</title><style>#container {
+            /* To create the column layout. */
+            display: flex;
+
+            /* To make the container relative to its children. */
+            position: relative;
+        }
+
+        #container .ck.ck-editor {
+            /* To stretch the editor to max 700px
+                (just to look nice for this example but it can be any size). */
+            width: 100%;
+            max-width: 700px;
+        }
+
+        #sidebar {
+            /* Set some size for the sidebar (it can be any). */
+            min-width: 300px;
+
+            /* Add some distance. */
+            padding: 0 10px;
+        }</style></head><body><div id="container"><div id="editor" style="border: 1px #ccc solid;width: 100%"></div></div><script src="responsive.js"></script><script src="mathConfig.js"></script><script src="ckeditor.js"></script><script>if (CKEditor) {
+        const { EquationInlineEditor} = CKEditor;
+
+        if (document.querySelector('#editor')) {
+            const HOSTNAME = window.location.hostname;
+            const CKFINDER_URL = `http://${ HOSTNAME }:2030`;
+
+            const UPLOAD_SERVER = `${ CKFINDER_URL }/easy-image.php?HTTP_REFERER=${ HOSTNAME }`;
+
+            EquationInlineEditor
+                .create(document.querySelector('#editor'), {
+                    uploadServer: UPLOAD_SERVER,
+                    // sidebar: {
+                    //     container: document.querySelector('#sidebar')
+                    // }
+                })
+                .then(editor => {
+
+                    // editor.enableReadOnlyMode( 'MathType' );
+                    window.editor = editor;
+
+                    // const commentsRepository = editor.plugins.get('CommentsRepository');
+                    // const channelId = 'foo';
+                    // const threadId = '1234';
+                    // // Create a new, empty comment thread on a DOM form field element:
+                    // commentsRepository.openNewCommentThread({ channelId, target: document.querySelector('#sidebar') });
+                    //
+                    // commentsRepository.on(`addComment:${ channelId }:${ threadId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+                    // commentsRepository.on(`addCommentThread:${ channelId }`, (evt, data) => {
+                    //     console.log(data);
+                    // });
+                    // commentsRepository.on(`removeComment:${ channelId }:${ threadId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+                    // commentsRepository.on(`removeCommentThread:${ channelId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+                    //
+                    // commentsRepository.on(`updateComment:${ channelId }:${ threadId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+
+                    // const command = editor.commands.get('MathType')
+                    //
+                    // command.on('execute', () => {
+                    //     editor.execute( 'selectAll' );
+                    // })
+                })
+                .catch(error => {
+                    console.error('Oops, something went wrong!');
+                    console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+                    console.warn('Build id: hd9s93ob9mci-nohdljl880ze');
+                    console.error(error);
+                });
+        }
+    }</script></body></html>
