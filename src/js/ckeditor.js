@@ -116,13 +116,6 @@ const config = {
         allowedCommands: [ 'MathType', 'ChemType' ],
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
-//     mathTypeParameters: {
-//         editorParameters: {
-//             toolbar: `<toolbar ref='general'>
-// <tab ref='chemistry' before='matrices'><removeItem ref='bold'/></tab>
-// </toolbar>`
-//         }
-//     },
     shouldNotGroupWhenFull: true,
     language: 'en',
     fontColor: {
@@ -245,8 +238,14 @@ InlineEditor.builtinPlugins = plugin;
 
 // Editor configuration.
 DemoEditor.defaultConfig = config;
-ClassicEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType')};
-InlineEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType')};
+ClassicEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType'),
+    mathTypeParameters: {
+        editorParameters: mathConfig.mathConfig
+    }};
+InlineEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType'),
+    mathTypeParameters: {
+        editorParameters: mathConfig.mathConfig
+    }};
 
 class EquationInlineEditor extends InlineEditor{};
 EquationInlineEditor.builtinPlugins = equationPlugin;

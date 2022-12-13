@@ -40,14 +40,14 @@
 <script src="ckeditor.js"></script>
 <script>
     if (CKEditor) {
-        const { ClassicEditor } = CKEditor;
+        const { DemoEditor } = CKEditor;
         if (document.querySelector('#editor')) {
             const HOSTNAME = window.location.hostname;
             const CKFINDER_URL = `http://${ HOSTNAME }:2030`;
 
             const UPLOAD_SERVER = `${ CKFINDER_URL }/easy-image.php?HTTP_REFERER=${ HOSTNAME }`;
 
-            ClassicEditor
+            DemoEditor
                 .create(document.querySelector('#editor'), {
                     uploadServer: UPLOAD_SERVER,
                     // sidebar: {

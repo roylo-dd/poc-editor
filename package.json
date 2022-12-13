@@ -1,6 +1,6 @@
 {
   "name": "poc-editor",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/ckeditor.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
