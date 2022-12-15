@@ -251,6 +251,10 @@ class EquationInlineEditor extends InlineEditor{};
 EquationInlineEditor.builtinPlugins = equationPlugin;
 EquationInlineEditor.defaultConfig = {...equationConfig,toolbar:equationConfig.toolbar.filter(item=>item!=='ChemType')};
 
+class PocEquationInlineEditor extends InlineEditor{};
+PocEquationInlineEditor.builtinPlugins = equationPlugin;
+PocEquationInlineEditor.defaultConfig = {...equationConfig,toolbar:equationConfig.toolbar.filter(item=>item!=='ChemType'),checkSyntax: 'true'};
+
 class CommentEditor extends BalloonEditor{};
 CommentEditor.builtinPlugins = commentPlugin;
 CommentEditor.defaultConfig = commentConfig;
@@ -262,6 +266,7 @@ export default {
     ClassicEditor,
     InlineEditor,
     EquationInlineEditor,
+    PocEquationInlineEditor,
     CommentEditor,
     Context
 };
