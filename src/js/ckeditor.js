@@ -208,6 +208,22 @@ const equationConfig = {
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
     mathTypeParameters: {
+        editorParameters: {...mathConfig.mathConfig,checkSyntax: 'true'}
+    },
+    shouldNotGroupWhenFull: true,
+    language: 'en',
+    licenseKey: process.env.LICENSEKEY,
+};
+
+const pocEquationConfig = {
+    toolbar: [
+        'MathType', 'ChemType'
+    ],
+    restrictedEditing: {
+        allowedCommands: [ 'MathType', 'ChemType' ],
+        allowedAttributes: [ 'MathType', 'ChemType' ]
+    },
+    mathTypeParameters: {
         editorParameters: mathConfig.mathConfig
     },
     shouldNotGroupWhenFull: true,
@@ -253,7 +269,7 @@ EquationInlineEditor.defaultConfig = {...equationConfig,toolbar:equationConfig.t
 
 class PocEquationInlineEditor extends InlineEditor{};
 PocEquationInlineEditor.builtinPlugins = equationPlugin;
-PocEquationInlineEditor.defaultConfig = {...equationConfig,toolbar:equationConfig.toolbar.filter(item=>item!=='ChemType'),checkSyntax: 'true'};
+PocEquationInlineEditor.defaultConfig = {...pocEquationConfig,toolbar:pocEquationConfig.toolbar.filter(item=>item!=='ChemType')};
 
 class CommentEditor extends BalloonEditor{};
 CommentEditor.builtinPlugins = commentPlugin;
