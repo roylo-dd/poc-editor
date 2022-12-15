@@ -208,7 +208,7 @@ const equationConfig = {
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
     mathTypeParameters: {
-        editorParameters: {...mathConfig.mathConfig,checkSyntax: 'true'}
+        editorParameters: {...mathConfig.mathConfig}
     },
     shouldNotGroupWhenFull: true,
     language: 'en',
@@ -224,7 +224,7 @@ const pocEquationConfig = {
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
     mathTypeParameters: {
-        editorParameters: mathConfig.mathConfig
+        editorParameters: {...mathConfig.mathConfig,checkSyntax: 'true'}
     },
     shouldNotGroupWhenFull: true,
     language: 'en',
