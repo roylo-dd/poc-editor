@@ -1,5 +1,5 @@
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
-import { Bold, Italic, Strikethrough, Subscript, Superscript } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Italic, Underline, Strikethrough, Subscript, Superscript } from '@ckeditor/ckeditor5-basic-styles';
 import Context from '@ckeditor/ckeditor5-core/src/context';
 
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
@@ -52,7 +52,7 @@ import { mediaEmbedConfig } from './includes/media_embed';
 // const extraPlugins = [ AllowClassesPlugin ];
 
 const plugin = [ Essentials,
-    Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Strikethrough, Subscript, Superscript,
+    Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Underline, Strikethrough, Subscript, Superscript,
     FontSize, FontColor,
     Link,
     Table, TableToolbar, TableCaption, TableProperties, TableCellProperties,
@@ -76,7 +76,7 @@ const equationPlugin = [ Essentials,
 ];
 
 const commentPlugin = [ Essentials,
-    Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Strikethrough, Subscript, Superscript,
+    Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Underline, Strikethrough, Subscript, Superscript,
     FontSize, FontColor,
     Link,
     Table, TableToolbar, TableCaption, TableProperties, TableCellProperties,
