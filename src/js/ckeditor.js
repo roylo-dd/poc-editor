@@ -67,9 +67,9 @@ const plugin = [ Essentials,
     // StandardEditingMode
 ];
 
-const equationPlugin = [Essentials,
+const equationPlugin = [ Essentials,
     Paragraph,
-    PreventDragImage,PreventTyping,
+    PreventDragImage, PreventTyping,
     MathType,
     RestrictedEditingMode
     // StandardEditingMode
@@ -97,7 +97,7 @@ const config = {
     toolbar: [ 'undo', 'redo',
         '|',
         'removeFormat',
-        'bold', 'italic', 'strikethrough', 'subscript', 'superscript',
+        'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript',
         '|',
         'fontSize', 'fontColor',
         '|',
@@ -208,11 +208,11 @@ const equationConfig = {
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
     mathTypeParameters: {
-        editorParameters: {...mathConfig.mathConfig}
+        editorParameters: { ...mathConfig.mathConfig }
     },
     shouldNotGroupWhenFull: true,
     language: 'en',
-    licenseKey: process.env.LICENSEKEY,
+    licenseKey: process.env.LICENSEKEY
 };
 
 const pocEquationConfig = {
@@ -224,11 +224,11 @@ const pocEquationConfig = {
         allowedAttributes: [ 'MathType', 'ChemType' ]
     },
     mathTypeParameters: {
-        editorParameters: {...mathConfig.mathConfig,checkSyntax: 'true'}
+        editorParameters: { ...mathConfig.mathConfig, checkSyntax: 'true' }
     },
     shouldNotGroupWhenFull: true,
     language: 'en',
-    licenseKey: process.env.LICENSEKEY,
+    licenseKey: process.env.LICENSEKEY
 };
 
 // const channelId = "foo"
@@ -242,36 +242,50 @@ const commentConfig = {
     // collaboration: {
     //     channelId
     // },
-    licenseKey: process.env.LICENSEKEY,
+    licenseKey: process.env.LICENSEKEY
 };
 
 
 // Plugins to include in the build.
-class DemoEditor extends ClassicEditor{};
+class DemoEditor extends ClassicEditor {
+};
 DemoEditor.builtinPlugins = plugin;
 ClassicEditor.builtinPlugins = plugin;
 InlineEditor.builtinPlugins = plugin;
 
 // Editor configuration.
 DemoEditor.defaultConfig = config;
-ClassicEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType'),
+ClassicEditor.defaultConfig = {
+    ...config, toolbar: config.toolbar.filter(item => item !== 'ChemType'),
     mathTypeParameters: {
         editorParameters: mathConfig.mathConfig
-    }};
-InlineEditor.defaultConfig = {...config,toolbar:config.toolbar.filter(item=>item!=='ChemType'),
+    }
+};
+InlineEditor.defaultConfig = {
+    ...config, toolbar: config.toolbar.filter(item => item !== 'ChemType'),
     mathTypeParameters: {
         editorParameters: mathConfig.mathConfig
-    }};
+    }
+};
 
-class EquationInlineEditor extends InlineEditor{};
+class EquationInlineEditor extends InlineEditor {
+};
 EquationInlineEditor.builtinPlugins = equationPlugin;
-EquationInlineEditor.defaultConfig = {...equationConfig,toolbar:equationConfig.toolbar.filter(item=>item!=='ChemType')};
+EquationInlineEditor.defaultConfig = {
+    ...equationConfig,
+    toolbar: equationConfig.toolbar.filter(item => item !== 'ChemType')
+};
 
-class PocEquationInlineEditor extends InlineEditor{};
+class PocEquationInlineEditor extends InlineEditor {
+};
 PocEquationInlineEditor.builtinPlugins = equationPlugin;
-PocEquationInlineEditor.defaultConfig = {...pocEquationConfig,toolbar:pocEquationConfig.toolbar.filter(item=>item!=='ChemType')};
+PocEquationInlineEditor.defaultConfig = {
+    ...pocEquationConfig,
+    toolbar: pocEquationConfig.toolbar.filter(item => item !== 'ChemType')
+};
 
-class CommentEditor extends BalloonEditor{};
+class CommentEditor extends BalloonEditor {
+};
 CommentEditor.builtinPlugins = commentPlugin;
 CommentEditor.defaultConfig = commentConfig;
 
