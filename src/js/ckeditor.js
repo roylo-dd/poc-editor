@@ -50,6 +50,17 @@ import { CustomUploadAdapterPlugin } from './includes/custom_upload';
 import { mediaEmbedConfig } from './includes/media_embed';
 
 // const extraPlugins = [ AllowClassesPlugin ];
+const demoPplugin = [ Essentials,
+    Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Underline, Strikethrough, Subscript, Superscript,
+    FontSize, FontColor,
+    Link,
+    Table, TableToolbar, TableCaption, TableProperties, TableCellProperties,
+    Image, ImageCaption, ImageStyle, ImageToolbar, ImageUpload, ImageInsert, ImageResizeEditing, ImageResizeButtons, ImageResizeHandles, LinkImage, MediaEmbed,
+    List,
+    Alignment,
+    MathType,
+    WordCount
+];
 
 const plugin = [ Essentials,
     Paragraph, PasteFromOffice, RemoveFormat, Bold, Italic, Underline, Strikethrough, Subscript, Superscript,
@@ -249,7 +260,7 @@ const commentConfig = {
 // Plugins to include in the build.
 class DemoEditor extends ClassicEditor {
 };
-DemoEditor.builtinPlugins = plugin;
+DemoEditor.builtinPlugins = demoPlugin;
 ClassicEditor.builtinPlugins = plugin;
 InlineEditor.builtinPlugins = plugin;
 
