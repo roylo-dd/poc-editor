@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
+const CopyPlugin = require("copy-webpack-plugin");
 
 const { styles } = require('@ckeditor/ckeditor5-dev-utils');
 
@@ -134,7 +135,12 @@ module.exports = {
         new webpack.NormalModuleReplacementPlugin(
             /font-size\.svg/,
             path.resolve(__dirname, 'src/img/replace', 'font-size.svg')
-        )
+        ),
+        new CopyPlugin({
+            patterns: [
+                { from: "src/source", to: "source" },
+            ],
+        }),
         // new CKEditorWebpackPlugin( {
         //     // UI language. Language codes follow the https://en.wikipedia.org/wiki/ISO_639-1 format.
         //     // When changing the built-in language, remember to also change it in the editor's configuration (src/ckeditor.js).

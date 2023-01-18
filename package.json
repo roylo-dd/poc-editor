@@ -45,6 +45,7 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-comments": "^35.4.0",
     "@ckeditor/ckeditor5-inspector": "^4.1.0",
+    "copy-webpack-plugin": "^11.0.0",
     "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.55.0",

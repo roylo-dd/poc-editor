@@ -35,20 +35,24 @@
 <button onclick="clearContent()">Clear ckeditor and preview content</button>
 <button onclick="showSavedContent()">Show saved content</button>
 <button onclick="reloadContent()">Reload saved content</button>
-
+<br/>
+<br/>
 <div id="container">
     <div id="editor">
         <p><b>The</b> editor content goes here.</p>
+        This is Audio
         <audio width="600" controls class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
             <source src="source/sample.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
+        This is Video
         <video width="600" controls="" class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
             <source src="source/sample.mp4" type="video/mp4">
             Your browser does not support HTML video.
         </video>
 
+        This is iframe
         <iframe src="http://localhost:2050/" class="full-width" data-id="12345" width="600px" height="100%"
                 style="width: 600px;max-width: 100%" referrerpolicy="no-referrer"></iframe>
     </div>
@@ -70,20 +74,22 @@
 
         function addVideo() {
             this.editor.model.change((writer) => {
-                const insertPosition = this.editor.model.document.selection.getFirstPosition();
+                // const insertPosition = this.editor.model.document.selection.getFirstPosition();
                 const viewFragment = this.editor.data.processor.toView(`<video width="600" controls="" class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
             <source src="source/sample.mp4" type="video/mp4">
             Your browser does not support HTML video.
         </video>`);
                 const modelFragment = this.editor.data.toModel(viewFragment);
-                writer.insert(modelFragment, insertPosition);
+                // writer.insertContent(modelFragment, insertPosition);
+                this.editor.model.insertContent( modelFragment, this.editor.model.document.selection );
+
             });
         }
 
         function clearContent() {
             this.editor.setData('');
             const preview = document.getElementById('preview');
-            preview.innerText = ''
+            preview.innerText = '';
         }
 
         function saveContent() {
@@ -92,7 +98,7 @@
             preview.innerText = data;
         }
 
-        function showSavedContent(){
+        function showSavedContent() {
             const preview = document.getElementById('preview');
             preview.innerText = data;
         }
