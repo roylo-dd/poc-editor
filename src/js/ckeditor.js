@@ -1,5 +1,8 @@
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Bold, Italic, Underline, Strikethrough, Subscript, Superscript } from '@ckeditor/ckeditor5-basic-styles';
+
+import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
+
 import Context from '@ckeditor/ckeditor5-core/src/context';
 
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
@@ -8,6 +11,7 @@ import BalloonEditor from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor.
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
 import { FontColor, FontSize } from '@ckeditor/ckeditor5-font';
+import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
 import { ImageInsert, ImageResizeButtons, ImageResizeEditing, ImageResizeHandles } from '@ckeditor/ckeditor5-image';
 
 import Image from '@ckeditor/ckeditor5-image/src/image.js';
@@ -59,7 +63,8 @@ const demoPlugin = [ Essentials,
     List,
     Alignment,
     MathType,
-    WordCount
+    WordCount,
+    GeneralHtmlSupport
 ];
 
 const plugin = [ Essentials,
@@ -73,7 +78,8 @@ const plugin = [ Essentials,
     List,
     Alignment,
     MathType,
-    WordCount
+    WordCount,
+    GeneralHtmlSupport
     // RestrictedEditingMode
     // StandardEditingMode
 ];
@@ -99,10 +105,48 @@ const commentPlugin = [ Essentials,
     MathType,
     WordCount,
     Comments,
-    CommentsRepository
+    CommentsRepository,
+    GeneralHtmlSupport
     // RestrictedEditingMode
     // StandardEditingMode
 ];
+const generalHtmlSupportConfig = {
+    allow: [ {
+        name: 'video',
+        styles: true,
+        classes: true,
+        attributes: {
+            style: true,
+            'data-id': true,
+            width: true,
+            controls: true
+        }
+    }, {
+        name: 'audio',
+        styles: true,
+        classes: true,
+        attributes: {
+            style: true,
+            'data-id': true,
+            width: true,
+            controls: true
+        }
+    },
+        {
+            name: 'iframe',
+            styles: true,
+            classes: true,
+            attributes: {
+                style: true,
+                'data-id': true,
+                src: true,
+                width: true,
+                height: true
+            }
+        } ],
+    disallow: [ /* HTML features to disallow */ ]
+};
+
 
 const config = {
     toolbar: [ 'undo', 'redo',
@@ -207,7 +251,8 @@ const config = {
         }
     },
     licenseKey: process.env.LICENSEKEY,
-    uploadServer: ''
+    uploadServer: '',
+    htmlSupport: generalHtmlSupportConfig
 };
 
 const equationConfig = {
@@ -250,6 +295,7 @@ const commentConfig = {
     shouldNotGroupWhenFull: true,
     extraPlugins: [ CommentsIntegration ],
     language: 'en',
+    htmlSupport: generalHtmlSupportConfig,
     // collaboration: {
     //     channelId
     // },
@@ -309,5 +355,6 @@ export default {
     EquationInlineEditor,
     PocEquationInlineEditor,
     CommentEditor,
-    Context
+    Context,
+    CKEditorInspector
 };

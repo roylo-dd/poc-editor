@@ -1,6 +1,6 @@
 {
   "name": "poc-editor",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "dist/ckeditor.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
@@ -21,6 +21,7 @@
     "@ckeditor/ckeditor5-editor-inline": "^35.4.0",
     "@ckeditor/ckeditor5-essentials": "^35.4.0",
     "@ckeditor/ckeditor5-font": "^35.4.0",
+    "@ckeditor/ckeditor5-html-support": "^35.4.0",
     "@ckeditor/ckeditor5-image": "^35.4.0",
     "@ckeditor/ckeditor5-link": "^35.4.0",
     "@ckeditor/ckeditor5-list": "^35.4.0",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-comments": "^35.4.0",
+    "@ckeditor/ckeditor5-inspector": "^4.1.0",
     "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.55.0",

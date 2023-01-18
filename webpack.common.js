@@ -108,6 +108,10 @@ module.exports = {
             inject: false
         }),
         new HtmlWebpackPlugin({
+            filename: 'ckeditor_media.html', template: 'src/ckeditor_media.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
             filename: 'mathtype.html', template: 'src/mathtype.html',
             inject: false
         }),

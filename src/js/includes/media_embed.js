@@ -4,6 +4,7 @@ export const mediaEmbedConfig = {
         {
             name: 'Brightcove',
 
+            // EG: https://players.brightcove.net/6144772950001/default_default/index.html?videoId=6296899904001
             // The following RegExp matches https://www.example.com/media/{media id},
             // (either with "http(s)://" and "www" or without), so the valid URLs are:
             //

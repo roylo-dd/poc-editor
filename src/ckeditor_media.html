@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor 5 Quick start guide</title>
+    <style type="text/css">
+        #container {
+            /* To create the column layout. */
+            display: flex;
+
+            /* To make the container relative to its children. */
+            position: relative;
+        }
+
+        #container .ck.ck-editor {
+            /* To stretch the editor to max 700px
+                (just to look nice for this example but it can be any size). */
+            width: 100%;
+            max-width: 700px;
+        }
+
+        #sidebar {
+            /* Set some size for the sidebar (it can be any). */
+            min-width: 300px;
+
+            /* Add some distance. */
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="addVideo()">Add video</button>
+<button onclick="saveContent()">Save content</button>
+<button onclick="clearContent()">Clear ckeditor and preview content</button>
+<button onclick="showSavedContent()">Show saved content</button>
+<button onclick="reloadContent()">Reload saved content</button>
+
+<div id="container">
+    <div id="editor">
+        <p><b>The</b> editor content goes here.</p>
+        <audio width="600" controls class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
+            <source src="source/sample.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <video width="600" controls="" class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
+            <source src="source/sample.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+        </video>
+
+        <iframe src="http://localhost:2050/" class="full-width" data-id="12345" width="600px" height="100%"
+                style="width: 600px;max-width: 100%" referrerpolicy="no-referrer"></iframe>
+    </div>
+    <!--    <div id="sidebar"></div>-->
+</div>
+
+<br/>
+<div id="preview"></div>
+
+<br/>
+<br/>
+<br/>
+<!--<span class="restricted-editing-exception">Region</span>-->
+<script src="responsive.js"></script>
+<script src="ckeditor.js"></script>
+<script>
+    if (CKEditor) {
+        let data = '';
+
+        function addVideo() {
+            this.editor.model.change((writer) => {
+                const insertPosition = this.editor.model.document.selection.getFirstPosition();
+                const viewFragment = this.editor.data.processor.toView(`<video width="600" controls="" class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
+            <source src="source/sample.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+        </video>`);
+                const modelFragment = this.editor.data.toModel(viewFragment);
+                writer.insert(modelFragment, insertPosition);
+            });
+        }
+
+        function clearContent() {
+            this.editor.setData('');
+            const preview = document.getElementById('preview');
+            preview.innerText = ''
+        }
+
+        function saveContent() {
+            data = this.editor.getData();
+            const preview = document.getElementById('preview');
+            preview.innerText = data;
+        }
+
+        function showSavedContent(){
+            const preview = document.getElementById('preview');
+            preview.innerText = data;
+        }
+
+        function reloadContent() {
+            this.editor.setData(data);
+        }
+
+        const { DemoEditor, CKEditorInspector } = CKEditor;
+        if (document.querySelector('#editor')) {
+            const HOSTNAME = window.location.hostname;
+            const CKFINDER_URL = `http://${ HOSTNAME }:2030`;
+
+            const UPLOAD_SERVER = `${ CKFINDER_URL }/easy-image.php?HTTP_REFERER=${ HOSTNAME }`;
+
+            DemoEditor
+                .create(document.querySelector('#editor'), {
+                    uploadServer: UPLOAD_SERVER
+                    // sidebar: {
+                    //     container: document.querySelector('#sidebar')
+                    // }
+                })
+                .then(editor => {
+
+                    // editor.enableReadOnlyMode( 'MathType' );
+                    window.editor = editor;
+
+                    CKEditorInspector.attach(editor);
+                    // const commentsRepository = editor.plugins.get('CommentsRepository');
+                    // const channelId = 'foo';
+                    // const threadId = '1234';
+                    // // Create a new, empty comment thread on a DOM form field element:
+                    // commentsRepository.openNewCommentThread({ channelId, target: document.querySelector('#sidebar') });
+                    //
+                    // commentsRepository.on(`addComment:${ channelId }:${ threadId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+                    // commentsRepository.on(`addCommentThread:${ channelId }`, (evt, data) => {
+                    //     console.log(data);
+                    // });
+                    // commentsRepository.on(`removeComment:${ channelId }:${ threadId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+                    // commentsRepository.on(`removeCommentThread:${ channelId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+                    //
+                    // commentsRepository.on(`updateComment:${ channelId }:${ threadId }`, (evt, data) => {
+                    //     console.log(evt, data);
+                    // });
+
+                })
+                .catch(error => {
+                    console.error('Oops, something went wrong!');
+                    console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+                    console.warn('Build id: hd9s93ob9mci-nohdljl880ze');
+                    console.error(error);
+                });
+        }
+    }
+</script>
+</body>
+</html>
