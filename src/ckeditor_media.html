@@ -30,6 +30,8 @@
 </head>
 <body>
 
+<input type="file" accept="video/*" onchange="loadVideo(event)"/>
+<br/>
 <button onclick="addVideo()">Add video</button>
 <button onclick="saveContent()">Save content</button>
 <button onclick="clearContent()">Clear ckeditor and preview content</button>
@@ -71,17 +73,23 @@
 <script>
     if (CKEditor) {
         let data = '';
-
+        let video_url = 'source/sample.mp4';
+        let custom_video_url = ''
+        function loadVideo(event) {
+            custom_video_url = URL.createObjectURL(event.target.files[0]);
+        }
         function addVideo() {
             this.editor.model.change((writer) => {
                 // const insertPosition = this.editor.model.document.selection.getFirstPosition();
+                let current_video_url = custom_video_url || video_url
+
                 const viewFragment = this.editor.data.processor.toView(`<video width="600" controls="" class="full-width" data-id="12345" style="width: 1600px;max-width: 100%">
-            <source src="source/sample.mp4" type="video/mp4">
+            <source src="${current_video_url}" type="video/mp4">
             Your browser does not support HTML video.
         </video>`);
                 const modelFragment = this.editor.data.toModel(viewFragment);
                 // writer.insertContent(modelFragment, insertPosition);
-                this.editor.model.insertContent( modelFragment, this.editor.model.document.selection );
+                this.editor.model.insertContent(modelFragment, this.editor.model.document.selection);
 
             });
         }
@@ -107,12 +115,12 @@
             this.editor.setData(data);
         }
 
-        const { DemoEditor, CKEditorInspector } = CKEditor;
+        const {DemoEditor, CKEditorInspector} = CKEditor;
         if (document.querySelector('#editor')) {
             const HOSTNAME = window.location.hostname;
-            const CKFINDER_URL = `http://${ HOSTNAME }:2030`;
+            const CKFINDER_URL = `http://${HOSTNAME}:2030`;
 
-            const UPLOAD_SERVER = `${ CKFINDER_URL }/easy-image.php?HTTP_REFERER=${ HOSTNAME }`;
+            const UPLOAD_SERVER = `${CKFINDER_URL}/easy-image.php?HTTP_REFERER=${HOSTNAME}`;
 
             DemoEditor
                 .create(document.querySelector('#editor'), {
